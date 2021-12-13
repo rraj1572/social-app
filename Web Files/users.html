@@ -1,0 +1,61 @@
+{% embed 'links.html' %} {% endembed %}
+{% embed 'sidebar.html' %} {% endembed %}
+
+  	<div class="socialapp-cards mdl-cell mdl-cell--12-col  mdl-grid mdl-grid--no-spacing">
+		<div class="lg-col lg-col-12 sm-col-12 xs-col-12 md-col-12">
+			{% if page != 1 %}
+			<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored left mr3" href="./users.php?page={{page - 5}}&per-page={{perPage}}"><i class="material-icons">navigate_before</i></a>
+			{% endif %}
+			{% for onepage in pages %}
+				{{onepage|raw}}
+			{% endfor %}
+			{% if page > pages|length %}
+			<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored right" href="./users.php?page={{page + 5}}&per-page={{perPage}}"><i class="material-icons">navigate_next</i></a>
+			{% endif %}
+		</div>
+	</div>
+	    <div class="socialapp-cards mdl-cell mdl-cell--12-col  mdl-grid mdl-grid--no-spacing mr2">
+  	    <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col  mdl-shadow--2dp">
+		  <thead>
+		    <tr>
+		      <th class="mdl-data-table__cell--non-numeric">Name</th>
+		      <th class="mdl-data-table__cell--non-numeric">Username</th>
+		      <th class="mdl-data-table__cell--non-numeric">Email</th>
+		      <th class="mdl-data-table__cell--non-numeric">Gender</th>
+		      <th class="mdl-data-table__cell--non-numeric">Account Verified</th>
+		      <th class="mdl-data-table__cell--non-numeric">Location</th>
+		      <th class="mdl-data-table__cell--non-numeric">Profile Picture</th>
+		      <th class="mdl-data-table__cell--non-numeric">Action</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  {% for user in users %}
+		    <tr>
+		      <td class="mdl-data-table__cell--non-numeric">{{user.name}}</td>
+		      <td class="mdl-data-table__cell--non-numeric">{{user.username}}</td>
+		      <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
+		      <td>{{user.gender}}</td>
+		      <td>{{user.isVerified}}</td>
+		      <td class="mdl-data-table__cell--non-numeric">{{user.location}}</td>
+		      <td class="mdl-data-table__cell--non-numeric">{{user.profilePhoto}}</td>
+		      <td class="mdl-data-table__cell--non-numeric"><a href="./profile.php?id={{user.id}}">Go To Account ({{user.id}})</a></td>
+		    </tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+	    </div>
+	<div class="socialapp-cards mdl-cell mdl-cell--12-col  mdl-grid mdl-grid--no-spacing">
+		<div class="lg-col lg-col-12 sm-col-12 xs-col-12 md-col-12">
+			{% if page != 1 %}
+			<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored left mr3" href="./users.php?page={{page - 5}}&per-page={{perPage}}"><i class="material-icons">navigate_before</i></a>
+			{% endif %}
+			{% for onepage in pages %}
+				{{onepage|raw}}
+			{% endfor %}
+			{% if page > pages|length %}
+			<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored right" href="./users.php?page={{page + 5}}&per-page={{perPage}}"><i class="material-icons">navigate_next</i></a>
+			{% endif %}
+		</div>
+	</div>
+
+{% embed 'footer.html' %} {% endembed %}

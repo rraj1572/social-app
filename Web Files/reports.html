@@ -1,0 +1,62 @@
+{% embed 'links.html' %} {% endembed %}
+{% embed 'sidebar.html' %} {% endembed %}
+
+  	<div class="socialapp-cards mdl-cell mdl-cell--12-col  mdl-grid mdl-grid--no-spacing mx-auto">
+		<div class="lg-col lg-col-12 sm-col-12 xs-col-12 md-col-12">
+			{% if page != 1 %}
+			<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored left mr3" href="./reports.php?page={{page - 5}}&per-page={{perPage}}"><i class="material-icons">navigate_before</i></a>
+			{% endif %}
+			{% for onepage in pages %}
+				{{onepage|raw}}
+			{% endfor %}
+			{% if pages|length != 0 %}
+			<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored right" href="./reports.php?page={{page + 5}}&per-page={{perPage}}"><i class="material-icons">navigate_next</i></a>
+			{% endif %}
+		</div>
+	</div>
+	<div class="clearfic"></div>
+	<div class="socialapp-cards mdl-cell mdl-cell--12-col  mdl-grid mdl-grid--no-spacing mr2 mx-auto">
+  	    <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col  mdl-shadow--2dp">
+		  <thead>
+		    <tr>
+		      <th class="mdl-data-table__cell--non-numeric">Reported post</th>
+		      <th class="mdl-data-table__cell--non-numeric">Report by</th>
+		      <th class="mdl-data-table__cell--non-numeric">Action</th>
+		      <th class="mdl-data-table__cell--non-numeric">Reason</th>
+		      <th class="mdl-data-table__cell--non-numeric">Creation</th>
+		      <th class="mdl-data-table__cell--non-numeric"></th>
+		      <th class="mdl-data-table__cell--non-numeric"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  {% for report in reports %}
+		    <tr>
+		      <td class="mdl-data-table__cell--non-numeric"><a href="./post.php?id={{report.postId}}">Reported Post Id ({{report.postId}})</a></td>
+		      <td class="mdl-data-table__cell--non-numeric"><a href="./profile.php?id={{report.report_by}}"> Report by {{report.reporter}}</a></td>
+		      <td class="mdl-data-table__cell--non-numeric">{{report.action}}</td>
+		      <td class="mdl-data-table__cell--non-numeric">{{report.reason}}</td>
+		      <td class="mdl-data-table__cell--non-numeric">{{report.creation |time_diff}}</td>
+		      <td class="mdl-data-table__cell--non-numeric"><a href="#" class="delete-btn" data-action="report" data-id="{{report.id}}">Delete Report ({{report.id}})</a></td>
+		      <td class="mdl-data-table__cell--non-numeric"><a href="#" class="clear-btn" data-action="report" data-id="{{report.id}}">Clear Report ({{report.id}})</a></td>
+		    </tr>
+		    {% endfor %}
+		  </tbody>
+		</table>
+	    </div>
+    <div class="clearfix"></div>
+	<div class="socialapp-cards mdl-cell mdl-cell--12-col  mdl-grid mdl-grid--no-spacing mx-auto">
+		<div class="lg-col lg-col-12 sm-col-12 xs-col-12 md-col-12">
+			{% if page != 1 %}
+			<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored left mr3" href="./reports.php?page={{page - 5}}&per-page={{perPage}}"><i class="material-icons">navigate_before</i></a>
+			{% endif %}
+			{% for onepage in pages %}
+				{{onepage|raw}}
+			{% endfor %}
+			{% if pages|length != 0 %}
+			<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored right" href="./reports.php?page={{page + 5}}&per-page={{perPage}}"><i class="material-icons">navigate_next</i></a>
+			{% endif %}
+
+		</div>
+	</div>
+
+{% embed 'footer.html' %} {% endembed %}
